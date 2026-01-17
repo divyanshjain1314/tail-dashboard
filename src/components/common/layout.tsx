@@ -25,8 +25,6 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
   return (
     <div className="flex h-screen overflow-hidden bg-white dark:bg-boxdark">
