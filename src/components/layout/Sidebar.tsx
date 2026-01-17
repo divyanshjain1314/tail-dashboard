@@ -38,14 +38,14 @@ export const Sidebar = ({ isCollapsed, isMobile, isMobileOpen, setMobileOpen, to
                     ? `fixed inset-y-0 left-0 z-50 transition-transform duration-300 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`
                     : 'relative'} 
                 ${isCollapsed && !isMobile ? 'w-20' : 'w-72'} 
-                h-screen overflow-hidden flex flex-col border-r bg-white dark:bg-[#101828] border-slate-100 dark:border-[#2E3A47]
+                max-h-screen h-screen overflow-hidden flex flex-col border-r bg-white dark:bg-[#101828] border-slate-100 dark:border-[#2E3A47]
             `}>
 
                 <div className="flex items-center gap-3 px-8 py-8 h-24">
                     <div className="min-w-10 h-10 bg-[#3C50E0] rounded-xl flex items-center justify-center  shadow-blue-100">
                         <span className="text-white font-bold text-xl">T</span>
                     </div>
-                    {!isCollapsed && (
+                    {(isMobile || !isCollapsed) && (
                         <span className={`text-2xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-[#1C2434]'}`}>
                             TailAdmin
                         </span>
@@ -73,7 +73,7 @@ export const Sidebar = ({ isCollapsed, isMobile, isMobileOpen, setMobileOpen, to
                     )}
                 </div>
 
-                <div className={`flex flex-col overflow-y-auto custom-scrollbar px-4 pb-10 ${isDark ? "border-r border-[#1C2434]" : ""}`}>
+                <div className={`flex flex-col overflow-y-auto h-full custom-scrollbar px-4 pb-10 ${isDark ? "border-r border-[#1C2434]" : ""}`}>
                     {menuGroups.map((group, gIdx) => (
                         <div key={gIdx} className="mb-6">
                             {!isCollapsed && (
@@ -103,10 +103,10 @@ export const Sidebar = ({ isCollapsed, isMobile, isMobileOpen, setMobileOpen, to
                                                 >
                                                     <FontAwesomeIcon
                                                         icon={item.icon}
-                                                        className={`text-lg ${isActive ? (isDark ? 'text-white' : 'text-[#3C50E0]') : (isDark ? 'text-[#8A99AF] group-hover:text-white' : 'text-[#64748B] group-hover:text-[#3C50E0]')}`}
+                                                          className={`text-lg ${isActive ? (isDark ? 'text-white' : 'text-[#3C50E0]') : (isDark ? 'text-[#8A99AF] group-hover:text-white' : 'text-[#64748B] group-hover:text-[#3C50E0]')}`}
                                                     />
 
-                                                    {!isCollapsed && (
+                                                    {(isMobile || !isCollapsed) && (
                                                         <>
                                                             <span className={`flex-1 font-medium text-[15px] ${isActive ? 'font-semibold' : ''}`}>
                                                                 {item.name}
