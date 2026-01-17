@@ -38,7 +38,7 @@ export const Sidebar = ({ isCollapsed, isMobile, isMobileOpen, setMobileOpen, to
                     ? `fixed inset-y-0 left-0 z-50 transition-transform duration-300 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`
                     : 'relative'} 
                 ${isCollapsed && !isMobile ? 'w-20' : 'w-72'} 
-                max-h-screen h-screen overflow-hidden flex flex-col border-r bg-white dark:bg-[#101828] border-slate-100 dark:border-[#2E3A47]
+                 h-screen overflow-hidden flex flex-col border-r bg-white dark:bg-[#101828] border-slate-100 dark:border-[#2E3A47]
             `}>
 
                 <div className="flex items-center gap-3 px-8 py-8 h-24">
@@ -73,7 +73,7 @@ export const Sidebar = ({ isCollapsed, isMobile, isMobileOpen, setMobileOpen, to
                     )}
                 </div>
 
-                <div className={`flex flex-col overflow-y-auto h-full custom-scrollbar px-4 pb-10 ${isDark ? "border-r border-[#1C2434]" : ""}`}>
+                <div className={`flex flex-col overflow-y-auto max-h-[80vh] h-full custom-scrollbar px-4 pb-10 ${isDark ? "border-r border-[#1C2434]" : ""}`}>
                     {menuGroups.map((group, gIdx) => (
                         <div key={gIdx} className="mb-6">
                             {!isCollapsed && (
